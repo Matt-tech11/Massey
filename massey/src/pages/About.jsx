@@ -72,20 +72,24 @@ function About() {
 
           {/* RIGHT — SCROLLING */}
           <div className={styles.processRight}>
-            <div className={styles.card}>1. Strategic Planning<br></br>
-            <p>The most fundamental and important phase in each project, where we elaborate a clear vision for your site and define our projects success criteria.</p>
-              
+            <div className={styles.card}>
+              <h3>1. Strategic Planning</h3>
+              <p>The most fundamental and important phase in each project, where we elaborate a clear vision for your site and define our projects success criteria.</p>
             </div>
-            <div className={styles.card}>2. Wireframing<br></br>
+            <div className={styles.card}>
+              <h3>2. Wireframing</h3>
               <p>Based on our strategy, we iteratively define the optimal site structure and page layouts. On top, required content such as copywriting and product screens will be created.</p>
             </div>
-            <div className={styles.card}>3. Web Design<br></br>
+            <div className={styles.card}>
+              <h3>3. Web Design</h3>
               <p>In this phase, we create the visual style and user interface of your site, ensuring it aligns with your brand and appeals to your target audience.</p>
             </div>
-            <div className={styles.card}>4. Development<br></br>
+            <div className={styles.card}>
+              <h3>4. Development</h3>
               <p>During this phase, the website is built using the latest technologies, ensuring it is responsive, fast, and accessible.</p>
             </div>
-            <div className={styles.card}>5. Launch<br></br>
+            <div className={styles.card}>
+              <h3>5. Launch</h3>
               <p>The final phase where the website goes live, and we ensure everything runs smoothly, providing support and making any necessary adjustments.</p>
             </div>
           </div>
@@ -97,7 +101,7 @@ function About() {
         <div className={styles.backgroundProfile}>
         <h1> My Background </h1>
         <p>I’ve been active in the creative industry for over a decade, following my creative passion and exploring many directions, involving video production, studying Creative Technology, and co-founding a marketing agency.
-        Only after going all-in on web design, and specializing in creating websites for tech companies, I found the one thing that I can truly obsess about.</p>
+        Only after going all-in on web design, and specializing in creating mobile applications & websites for tech companies, I found the one thing that I can truly obsess about.</p>
         </div>
         <div className={styles.backgroundImage}>
           <img src="/img3.jpg" alt="About" className={styles.image} />

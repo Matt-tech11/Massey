@@ -39,11 +39,11 @@ export default function Home() {
       question: "What does the process look like ?",
       answer:
       <div>
-       <p>My web and app process consists of the following 5 steps:</p><br/>
-       <p>1.  Discovery & Research </p><br></br>
-       <p>2.  Strategic Planning </p><br></br>
-       <p>3.  Wireframing & Prototyping </p><br></br>
-       <p>4.  Visual Design & Development </p><br></br>
+       <p>My web and app process consists of the following 5 steps:</p>
+       <p>1.  Discovery & Research</p>
+       <p>2.  Strategic Planning</p>
+       <p>3.  Wireframing & Prototyping</p>
+       <p>4.  Visual Design & Development</p>
        <p>5.  Launch</p>
        </div>
     },
@@ -141,7 +141,7 @@ export default function Home() {
                 activeIndex === index ? styles.showAnswer : ""
               }`}
             >
-              <p>{item.answer}</p>
+              {typeof item.answer === 'string' ? <p>{item.answer}</p> : item.answer}
             </div>
           </div>
         ))}

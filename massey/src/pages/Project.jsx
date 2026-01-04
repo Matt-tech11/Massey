@@ -1,78 +1,73 @@
 import { useState } from "react";
 import styles from "./Project.module.css";
+import emailjs from "@emailjs/browser";
+import React, {useRef} from 'react';
 
 export default function Project() {
+  const contact = useRef(); // This will now be attached to the form
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your form logic here (e.g., API call)
-    setSubmitted(true);
+
+    // The 'contact.current' now correctly points to the <form>
+    emailjs.sendForm(
+      "service_9yqclrj", 
+      "template_sujbfhc", 
+      contact.current, 
+      "te26wRMa-4UPnlX7P" 
+    )
+    .then((result) => {
+        console.log("Success!", result.text);
+        setSubmitted(true);
+    }, (error) => {
+        console.log("Failed...", error.text);
+    });
   };
 
   return (
     <section className={styles.contact}>
-      {/* Left content */}
+      {/* Left content - Removed the ref and onSubmit from here */}
       <div className={styles.left}>
         <span className={styles.tag}>[ CONTACT ]</span>
         <h1 className={styles.title}>
-          Request a project to <br />
-          start the conversation
+          Request a project to <br /> start the conversation
         </h1>
         <p className={styles.subtitle}>
-          You will hear from me within 2 business days. I’m looking forward
-          to meeting you and answering any questions.
+          You will hear from me within 2 business days.
         </p>
       </div>
 
-      {/* Right side: Conditional Rendering */}
       <div className={styles.right}>
         {!submitted ? (
-          <form className={styles.form} onSubmit={handleSubmit}>
+          /* ATTACH REF HERE */
+          <form ref={contact} className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.field}>
               <label>Full name</label>
-              <input type="text" required />
+              {/* ADDED name="user_name" (or whatever matches your EmailJS template) */}
+              <input type="text" name="from_name" required />
             </div>
 
             <div className={styles.field}>
               <label>Email</label>
-              <input type="email" required />
+              <input type="email" name="user_email" required />
             </div>
 
             <div className={styles.field}>
               <label>Company</label>
-              <input type="text" />
+              <input type="text" name="company_name" />
             </div>
 
-            <div className={styles.budget}>
-              <p>What is your budget for this project?</p>
-              <div className={styles.budgetOptions}>
-                <label>
-                  <input type="radio" name="budget" /> $10k - 20k
-                </label>
-                <label>
-                  <input type="radio" name="budget" /> $20k - 50k
-                </label>
-                <label>
-                  <input type="radio" name="budget" /> $50k - 100k
-                </label>
-              </div>
-            </div>
+
 
             <div className={styles.field}>
               <label>Message</label>
-              <textarea placeholder="Is there anything you can share about the project?" />
+              <input type="text" name="message" required placeholder="Project details..." />
             </div>
-
-            <p className={styles.privacy}>
-              Your data will only be used to contact you. For more information,
-              please see the <a href="#">privacy policy</a>.
-            </p>
 
             <button type="submit" className={styles.submit}>Submit</button>
           </form>
         ) : (
-          /* SUCCESS STATE: Matches Screenshot (241).png */
           <div className={styles.successWrapper}>
             <h2 className={styles.successTitle}>Thank you for your submission!</h2>
           </div>
